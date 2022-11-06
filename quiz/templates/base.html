@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik" rel="stylesheet">
+
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block css %}
@@ -34,7 +39,7 @@
                 {% if not request.user.is_active %}
                 <a href="{%url 'quiz:leaderboard' %}" class="btn btn-info mt-1 mx-1">Leaderboard</a>
                 <a href="{%url 'quiz:login' %}" class="btn btn-info mt-1 mx-1">
-                    <i class="fa-thin fa-arrow-right-to-bracket" aria-hidden="true"></i>
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
                     Log In 
                 </a>
 

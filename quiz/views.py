@@ -20,6 +20,7 @@ def user_home(request):
     return render(request, 'quiz/user_home.html', context=context)
 
 
+@login_required()
 def leaderboard(request):
     top_quiz_profiles = QuizProfile.objects.order_by('-total_score')[:500]
     total_count = top_quiz_profiles.count()
