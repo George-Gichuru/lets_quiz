@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-vt3_7q88nf@u+s0be*ar_(#kdrf+0^bub(!84n2j*gg4z6l%nc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['letsquizapp.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'letsquizapp.herokuapp.com']
 
 
 # Application definition
@@ -79,24 +79,24 @@ WSGI_APPLICATION = 'lets_quiz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2vqnvaagu46kq',
+        'USER': 'etfudkjdbtyfbi',
+        'PASSWORD': '60374581376a5a13088ec35ac0470b55c120f5ba73f177bb30ab87755e279529',
+        'HOST': 'ec2-52-23-131-232.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
-
-# DATABASES={
-#    'default':{
-#       'ENGINE':'django.db.backends.postgresql_psycopg2',
-#       'NAME':'dc1rrh610hknb9',
-#       'USER':'zfysvhkxeowtpx',
-#       'PASSWORD':'55dba154f7acbad52582bf3d456f5f13936bbc43338164ec999080fbfcca85db',
-#       'HOST':'ec2-3-226-163-72.compute-1.amazonaws.com',
-#       'PORT':'5432',
-#    }
-# }
 
 
 # Password validation
