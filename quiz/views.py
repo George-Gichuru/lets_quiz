@@ -104,7 +104,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect('/login')
 
 
 def error_404(request):
