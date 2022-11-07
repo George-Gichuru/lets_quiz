@@ -6,8 +6,6 @@ from django.http import Http404
 from .models import QuizProfile, Question, AttemptedQuestion
 from .forms import UserLoginForm, RegistrationForm
 
-# Create your views here.
-
 
 def home(request):
     context = {}
@@ -22,13 +20,13 @@ def user_home(request):
 
 @login_required()
 def leaderboard(request):
+
     top_quiz_profiles = QuizProfile.objects.order_by('-total_score')[:500]
     total_count = top_quiz_profiles.count()
     context = {
         'top_quiz_profiles': top_quiz_profiles,
         'total_count': total_count,
     }
-
     return render(request, 'quiz/leaderboard.html', context=context)
 
 
@@ -39,14 +37,15 @@ def play(request):
 
     if request.method == 'POST':
         question_pk = request.POST.get('question_pk')
+
         attempted_question = quiz_profile.attempts.select_related(
-            'question').get(question_pk=question_pk)
+            'question').get(question__pk=question_pk)
+
         choice_pk = request.POST.get('choice_pk')
 
         try:
             selected_choice = attempted_question.question.choices.get(
                 pk=choice_pk)
-
         except ObjectDoesNotExist:
             raise Http404
 
@@ -55,7 +54,6 @@ def play(request):
         return redirect(attempted_question)
 
     else:
-
         question = quiz_profile.get_new_question()
         if question is not None:
             quiz_profile.create_attempt(question)
@@ -79,29 +77,24 @@ def submission_result(request, attempted_question_pk):
 
 
 def login_view(request):
-    title = "LOGIN"
+    title = "Login"
     form = UserLoginForm(request.POST or None)
-
     if form.is_valid():
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
-
         login(request, user)
         return redirect('/user-home')
     return render(request, 'quiz/login.html', {"form": form, "title": title})
 
 
 def register(request):
-    title = "Create Your Account"
-
+    title = "Create account"
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-
         if form.is_valid():
             form.save()
             return redirect('/login')
-
     else:
         form = RegistrationForm()
 

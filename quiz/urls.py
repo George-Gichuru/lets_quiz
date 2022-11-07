@@ -9,7 +9,7 @@ urlpatterns = [
     path('user-home/', views.user_home, name='user_home'),
     path('play/', views.play, name='play'),
     path('leaderboard/', views.leaderboard, name='leaderboard'),
-    path('submission-result/(<attempted_question_pk>/)',
+    path('submission-result/<attempted_question_pk>/',
          views.submission_result, name='submission_result'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.login_view, name='logout'),
