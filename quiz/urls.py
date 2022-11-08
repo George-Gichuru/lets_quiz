@@ -12,7 +12,7 @@ urlpatterns = [
     path('submission-result/<attempted_question_pk>/',
          views.submission_result, name='submission_result'),
     path('login/', views.login_view, name='login'),
-    path('logout/', views.login_view, name='logout'),
+    path('logout/', views.logout_view, name='logout'),
     path('register/', views.register, name='register'),
 
 ]
